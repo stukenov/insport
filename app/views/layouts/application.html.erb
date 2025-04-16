@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) + " | INSPORT TV" : "INSPORT TV" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <%= yield :head if content_for?(:head) %>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <%= link_to "InsportTV", root_path, class: "logo" %>
+        
+        <nav class="nav">
+          <%= link_to "Прямой эфир", live_path, class: "nav__link" %>
+          <%= link_to "Программа", epgs_path, class: "nav__link" %>
+          <%= link_to "Новости", articles_path, class: "nav__link" %>
+          <%= link_to "Передачи", projects_path, class: "nav__link" %>
+          <%= link_to "Архив", archive_path, class: "nav__link" %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <p class="footer__title">О нас</p>
+            <p>Казахстанский спортивный телеканал</p>
+          </div>
+          <div class="footer__links">
+            <p class="footer__title">Ссылки</p>
+            <ul>
+              <li><a href="#">Архив</a></li>
+              <li><a href="#">Программа</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer__title">Контакты</p>
+            <p>info@insport.tv</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
