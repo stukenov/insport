@@ -47,7 +47,7 @@ jobs:
   ui-test:
     runs-on: ubuntu-22.04
     services:
-      postgres:
+      postgres-ui:
         image: postgres:11-alpine
         ports:
           - "5432:5432"
@@ -58,7 +58,7 @@ jobs:
           POSTGRES_PASSWORD: password_ui
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails_ui:password_ui@postgres:5432/rails_test_ui"
+      DATABASE_URL: "postgres://rails_ui:password_ui@postgres-ui:5432/rails_test_ui"
 
     steps:
       - uses: actions/checkout@v4
@@ -67,9 +67,6 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
-
-      - name: Wait for Postgres
-        run: until pg_isready -h postgres -U rails_ui -d rails_test_ui; do sleep 1; done
 
       - name: Prepare DB
         run: bundle exec rails db:schema:load
