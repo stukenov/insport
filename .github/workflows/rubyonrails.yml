@@ -49,13 +49,15 @@ jobs:
     services:
       postgres-ui:
         image: postgres:11-alpine
+        ports:
+          - "5432:5432"
         env:
           POSTGRES_DB: rails_test_ui
           POSTGRES_USER: rails_ui
           POSTGRES_PASSWORD: password_ui
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails_ui:password_ui@postgres-ui:5432/rails_test_ui"
+      DATABASE_URL: "postgres://rails_ui:password_ui@localhost:5432/rails_test_ui"
 
     steps:
       - uses: actions/checkout@v4
