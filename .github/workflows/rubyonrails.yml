@@ -42,17 +42,18 @@ jobs:
 
   # ---------- UI / system / feature tests ----------
   ui-test:
+    needs: test                        # запускаем после unit‑тестов
     runs-on: ubuntu-22.04
     services:
       postgres:
         image: postgres:11-alpine
         env:
-          POSTGRES_DB: rails_test_ui
-          POSTGRES_USER: rails_ui
-          POSTGRES_PASSWORD: password_ui
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails_ui:password_ui@localhost:5432/rails_test_ui"
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
 
     steps:
       - uses: actions/checkout@v4
@@ -72,6 +73,7 @@ jobs:
 
       - name: Run system tests
         run: bundle exec rails test:system      # rspec → `bundle exec rspec spec/system`
+
 
   lint:
     runs-on: ubuntu-22.04
