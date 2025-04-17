@@ -45,7 +45,6 @@ jobs:
 
   # ---------- UI / system / feature tests ----------
   ui-test:
-    needs: test                        # запускаем после unit‑тестов
     runs-on: ubuntu-22.04
     services:
       postgres:
