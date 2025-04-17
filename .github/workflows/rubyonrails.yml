@@ -40,16 +40,39 @@ jobs:
       - name: Run tests
         run: bundle exec rake
 
-      # ставим Chrome и совместимый Chromedriver
-      - uses: browser-actions/setup-chrome@v1  # официальная action
+  # ---------- UI / system / feature tests ----------
+  ui-test:
+    needs: test                        # запускаем после unit‑тестов
+    runs-on: ubuntu-22.04
+    services:
+      postgres:
+        image: postgres:11-alpine
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
         with:
-          chrome-version: 'latest'
-        install-chromedriver: true           # нужен драйвер :contentReference[oaicite:0]{index=0}
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Prepare DB
+        run: bundle exec rails db:schema:load
+
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: latest
+          install-chromedriver: true
 
       - name: Run system tests
-        env:
-          RAILS_ENV: test
-        run: bundle exec rails test:system      # или rspec spec/system
+        run: bundle exec rails test:system      # rspec → `bundle exec rspec spec/system`
 
   lint:
     runs-on: ubuntu-22.04
