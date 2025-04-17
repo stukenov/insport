@@ -23,9 +23,9 @@
         <nav class="nav">
           <%= link_to "Прямой эфир", live_path, class: "nav__link" %>
           <%= link_to "Программа", epgs_path, class: "nav__link" %>
-          <%= link_to "Новости", articles_path, class: "nav__link" %>
-          <%= link_to "Передачи", projects_path, class: "nav__link" %>
-          <%= link_to "Архив", archive_path, class: "nav__link" %>
+          <%# <%= link_to "Новости", articles_path, class: "nav__link" %>
+          <%# <%= link_to "Передачи", projects_path, class: "nav__link" %>
+          <%# <%= link_to "Архив", archive_path, class: "nav__link" %>
         </nav>
       </div>
     </header>
@@ -45,8 +45,8 @@
           <div class="footer__links">
             <p class="footer__title">Ссылки</p>
             <ul>
-              <li><a href="#">Архив</a></li>
-              <li><a href="#">Программа</a></li>
+              <li><%= link_to "Контакты", pages_contact_path %></li>
+              <li><%= link_to "О нас", pages_about_path %></li>
             </ul>
           </div>
           <div>

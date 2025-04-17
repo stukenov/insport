@@ -1,2 +1,18 @@
-<h1>Live</h1>
-<p>Find me in app/views/live/show.html.erb</p>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<div class="container">
+    <h1 class="page-title">Live</h1>
+    <div class="live__content">
+        <video id="video" width="100%" height="100%" autoplay></video>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('video');
+    const hls = new Hls();
+    hls.loadSource('https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        video.play();
+    });
+</script>

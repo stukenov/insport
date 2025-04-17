@@ -1,7 +1,10 @@
-<h1>Articles</h1>
+<h1 class="page-title">Articles</h1>
 
-<ul>
+<div class="articles">
   <% @articles.each do |article| %>
-    <li><%= article.title %></li>
+    <a href="<%= article_path(article) %>" class="article">
+      <%= image_tag article.image_url, class: "article__image" %>
+      <h2 class="article__title"><%= article.title %></h2>
+    </a>
   <% end %>
-</ul>
+</div>

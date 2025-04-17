@@ -1,2 +1,19 @@
-<h1>EPG</h1>
-<p>Find me in app/views/epgs/index.html.erb</p>
+<div class="container">
+    <h1 class="page-title">EPG</h1>
+    <div class="epgs">
+        <% if @epgs.any? %>
+            <% @epgs.each do |epg| %>
+                <div class="epg">
+                    <div class="epg__title">
+                    <% if epg.start_time %>
+                    <%= epg.start_time %>
+                <% else %>
+                        <p>Без названия</p>
+                    <% end %>
+                </div>
+            <% end %>
+        <% else %>
+            <p class="epgs__empty">Нет данных</p>
+        <% end %>
+    </div>
+</div>

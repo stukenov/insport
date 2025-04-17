@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_15_114600) do
     t.boolean "featured", default: false
     t.datetime "published_at"
     t.integer "views_count", default: 0
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category"], name: "index_articles_on_category"
@@ -44,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_15_114600) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.bigint "project_id", null: false
+    t.bigint "project_id"
     t.string "title", null: false
     t.text "description"
     t.integer "duration"
