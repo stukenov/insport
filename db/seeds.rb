@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faker'
 
 # create_table :articles do |t|

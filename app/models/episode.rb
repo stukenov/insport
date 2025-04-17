@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Episode < ApplicationRecord
   belongs_to :project
   has_many :epgs

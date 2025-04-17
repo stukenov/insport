@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '>= 3.3.2'
@@ -70,5 +72,7 @@ group :test do
   gem 'bundler-audit'
   gem 'capybara'
   gem 'rubocop'
+  gem 'rubocop-capybara'
+  gem 'rubocop-rails'
   gem 'selenium-webdriver'
 end
