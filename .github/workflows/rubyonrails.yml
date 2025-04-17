@@ -47,12 +47,12 @@ jobs:
       postgres:
         image: postgres:11-alpine
         env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
-          POSTGRES_PASSWORD: password
+          POSTGRES_DB: rails_test_ui
+          POSTGRES_USER: rails_ui
+          POSTGRES_PASSWORD: password_ui
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      DATABASE_URL: "postgres://rails_ui:password_ui@localhost:5432/rails_test_ui"
 
     steps:
       - uses: actions/checkout@v4
