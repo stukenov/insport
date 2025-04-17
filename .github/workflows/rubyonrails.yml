@@ -49,14 +49,16 @@ jobs:
     services:
       postgres:
         image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+
         env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
-          POSTGRES_PASSWORD: password
+          POSTGRES_DB: rails_test_ui
+          POSTGRES_USER: rails_ui
+          POSTGRES_PASSWORD: password_ui
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@postgres:5432/rails_test"
-
+      DATABASE_URL: "postgres://rails_ui:password_ui@postgres:5432/rails_test_ui"
 
     steps:
       - uses: actions/checkout@v4
@@ -67,7 +69,7 @@ jobs:
           bundler-cache: true
 
       - name: Wait for Postgres
-        run: until pg_isready -h postgres -U rails -d rails_test; do sleep 1; done
+        run: until pg_isready -h postgres -U rails_ui -d rails_test_ui; do sleep 1; done
 
       - name: Prepare DB
         run: bundle exec rails db:schema:load
