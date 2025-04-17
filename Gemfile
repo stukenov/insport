@@ -59,7 +59,7 @@ group :development, :test do
   gem 'rubocop-capybara'
   gem 'rubocop-rails'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
+  # gem 'webdrivers'
 end
 
 group :development do
