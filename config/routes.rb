@@ -9,16 +9,14 @@ Rails.application.routes.draw do
   # Main sections
   get 'epgs', to: 'epgs#index', as: 'epgs' # +
   get 'live', to: 'live#show', as: 'live' # +
-  
+
   get 'projects', to: 'projects#index', as: 'projects'
   get 'project/:slug', to: 'projects#show', as: 'project'
   get 'project/:slug/episodes', to: 'episodes#index_for_project', as: 'project_episodes' # +
-  
+
   get 'archive', to: 'episodes#index', as: 'archive' # +
   get 'episode/:episode_id', to: 'episodes#show', as: 'episode' # +
 
   get 'articles', to: 'articles#index', as: 'articles' # +
   get 'article/:id', to: 'articles#show', as: 'article' # +
-
-
 end

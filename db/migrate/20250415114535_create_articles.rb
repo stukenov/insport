@@ -8,11 +8,11 @@ class CreateArticles < ActiveRecord::Migration[7.1]
       t.boolean :featured, default: false
       t.datetime :published_at
       t.integer :views_count, default: 0
-      t.string :image_url 
-      
+      t.string :image_url
+
       t.timestamps
     end
-    
+
     add_index :articles, :category
     add_index :articles, :published
     add_index :articles, :featured

@@ -6,10 +6,10 @@ class CreateEpisodes < ActiveRecord::Migration[7.1]
       t.text :description
       t.integer :duration # in minutes
       t.string :video_url
-      
+
       t.timestamps
     end
-    
+
     add_index :episodes, :title
     add_index :episodes, :video_url
   end
