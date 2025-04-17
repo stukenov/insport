@@ -40,6 +40,17 @@ jobs:
       - name: Run tests
         run: bundle exec rake
 
+      # ставим Chrome и совместимый Chromedriver
+      - uses: browser-actions/setup-chrome@v1  # официальная action
+        with:
+          chrome-version: 'latest'
+        install-chromedriver: true           # нужен драйвер :contentReference[oaicite:0]{index=0}
+
+      - name: Run system tests
+        env:
+          RAILS_ENV: test
+        run: bundle exec rails test:system      # или rspec spec/system
+
   lint:
     runs-on: ubuntu-22.04
     steps:
