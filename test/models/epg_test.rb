@@ -10,8 +10,8 @@ class ScheduleEntryTest < ActiveSupport::TestCase
     epg = Epg.new(
       project: projects(:one),
       episode: episodes(:one),
-      start_time: Time.now,
-      end_time: Time.now
+      start_time: Time.zone.now,
+      end_time: Time.zone.now
     )
     assert epg.save
   end

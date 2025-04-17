@@ -10,7 +10,7 @@ class NewsTest < ActiveSupport::TestCase
       category: 1,
       published: true,
       featured: false,
-      published_at: Time.now,
+      published_at: Time.zone.now,
       views_count: 0
     )
 

@@ -2,7 +2,7 @@
 
 class Episode < ApplicationRecord
   belongs_to :project
-  has_many :epgs
+  has_many :epgs, dependent: :destroy
 
   validates :title, :description, :duration, :video_url, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: 0 }

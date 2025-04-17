@@ -1,0 +1,12 @@
+require:
+  - rubocop-rails
+  - rubocop-capybara
+  
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 40
+
+Metrics/MethodLength:
+  Max: 15
