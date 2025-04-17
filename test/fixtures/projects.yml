@@ -7,7 +7,7 @@ one:
   featured: true
 
 two:
-  title: MyString
+  title: MyString2
   description: MyText
   active: true
   featured: false
